@@ -43,9 +43,9 @@ final class FooFieldset extends Fieldset
                 'should_create_template' => true,
                 'allow_add'              => true,
                 'template_placeholder'   => '__bar__',
-                'target_element'         => array(
+                'target_element'         => [
                     'type' => BarFieldset::class
-                ),
+                ],
             ]
         ]);
     }
