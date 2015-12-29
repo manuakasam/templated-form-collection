@@ -28,7 +28,6 @@ final class BarFieldset extends Fieldset
                 'count'                  => 2,
                 'should_create_template' => true,
                 'allow_add'              => true,
-                'should_wrap'            => false,
                 'template_placeholder'   => '__baz__',
                 'target_element'         => array(
                     'type' => BazFieldset::class

@@ -26,18 +26,11 @@ final class TemplatedFormCollection extends FormCollection
      *
      * @param  ElementInterface|null $element
      * @param  string                $templatePartial
-     * @param  bool                  $wrap
      *
      * @return string|FormCollection
      */
-    public function __invoke(ElementInterface $element, $templatePartial, $wrap = true)
+    public function __invoke(ElementInterface $element, $templatePartial)
     {
-        if (!$templatePartial) {
-            throw new InvalidArgumentException('$templatePartial cannot be null');
-        }
-
-        $this->setShouldWrap($wrap);
-
         return $this->render($element, $templatePartial);
     }
 
@@ -48,13 +41,13 @@ final class TemplatedFormCollection extends FormCollection
      * @param  string           $templatePartial Required Template Path for manual rendering of template elements
      *
      * @return string
+     *
+     * @throws InvalidArgumentException
      */
     public function render(ElementInterface $element, $templatePartial)
     {
-        $renderer = $this->getView();
-        if (!method_exists($renderer, 'plugin')) {
-            // Bail early if renderer is not pluggable
-            return '';
+        if (!$templatePartial) {
+            throw new InvalidArgumentException('$templatePartial cannot be null');
         }
 
         $markup         = '';
