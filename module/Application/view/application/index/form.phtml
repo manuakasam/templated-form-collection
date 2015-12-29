@@ -1,0 +1,35 @@
+<?php
+/** @var \Application\Form\FooForm $form */
+$form = $this->form;
+$form->setAttribute('action', $this->url());
+$form->setAttribute('method', 'POST');
+$form->setAttribute('id', 'foobarbaz');
+$form->prepare();
+?>
+<h1>A beautiful form</h1>
+<?= $this->form()->openTag($form); ?>
+<div style="background-color: #ddd;">
+    <?= $this->templatedFormCollection($form->getBaseFieldset(), 'application/form/foo'); ?>
+</div>
+<?= $this->form()->closeTag(); ?>
+<script>
+    var form       = $('#foobarbaz');
+    var addButtons = $('.add-fs');
+
+    if (addButtons.length) {
+        form.on('click', '.add-fs', function(e) {
+            e.preventDefault();
+
+            var me        = $(this);
+            var parentDiv = me.closest('div.row');
+            var siblings  = parentDiv.children('div').length;
+            var tplSpan   = parentDiv.children('span[data-template]');
+            var tplOld    = tplSpan.data('template');
+            var tplKey    = tplSpan.data('replace');
+            var counter   = new RegExp(tplKey, 'g');
+            var tplNew    = tplOld.replace(counter, siblings);
+
+            parentDiv.append(tplNew);
+        });
+    }
+</script>

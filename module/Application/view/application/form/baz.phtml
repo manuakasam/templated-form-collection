@@ -1,0 +1,10 @@
+<?php
+/** @var \Zend\Form\Element\Collection $collection */
+$collection = $this->collection;
+
+$bazText = $collection->get('bazText');
+?>
+
+<div class="col-lg-4">
+    <?= $this->formRow($bazText); ?>
+</div>

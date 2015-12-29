@@ -1,0 +1,23 @@
+<?php
+/** @var \Zend\Form\Element\Collection $collection */
+$collection = $this->collection;
+
+$fooText       = $collection->get('fooText');
+$fooSelect     = $collection->get('fooSelect');
+$barCollection = $collection->get('barCollection');
+?>
+
+<div class="row">
+    <div class="col-lg-6">
+        <?= $this->formRow($fooText); ?>
+    </div>
+    <div class="col-lg-6">
+        <?= $this->formRow($fooSelect); ?>
+    </div>
+</div>
+<div class="row" style="background-color:mediumpurple">
+    <?= $this->templatedFormCollection($barCollection, 'application/form/bar', false); ?>
+    <span class="btn btn-primary add-fs">New Bar</span>
+</div>
+
+

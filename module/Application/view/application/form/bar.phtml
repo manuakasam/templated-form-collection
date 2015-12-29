@@ -1,0 +1,21 @@
+<?php
+/** @var \Zend\Form\Element\Collection $collection */
+$collection = $this->collection;
+
+$barText       = $collection->get('barText');
+$bazCollection = $collection->get('bazCollection');
+?>
+
+<div class="col-lg-6">
+    <div class="row">
+        <div class="col-lg-12">
+            <?= $this->formRow($barText); ?>
+        </div>
+        <div class="col-lg-12">
+            <div class="row" style="background-color: teal">
+                <?= $this->templatedFormCollection($bazCollection, 'application/form/baz', false); ?>
+                <span class="btn btn-primary add-fs">New Bazinga</span>
+            </div>
+        </div>
+    </div>
+</div>
